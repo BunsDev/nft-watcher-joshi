@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import NftDetail from './components/NftDetail';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex flex-col min-h-screen justify-between">
+      <BrowserRouter>
+      <Header></Header>
+      <div className="flex">
+        <Routes>
+          <Route path="/" exact element={<Home/>} />
+          <Route path="/Nft/:contractAddress" element={ <NftDetail/>} />
+        </Routes>
+      </div>
+      <Footer></Footer>
+      </BrowserRouter>
     </div>
   );
 }
